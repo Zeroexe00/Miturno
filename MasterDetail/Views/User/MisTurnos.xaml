@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MasterDetail.MisTurnos"
+             BackgroundImage="orangebg.png"
+             Title="Mis Turnos">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout HeightRequest="300">
+                <ActivityIndicator x:Name="waitActivityIndicator" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <ListView x:Name="Mis_Turnos"  HasUnevenRows="True" BackgroundColor="Transparent">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell  x:Name="cvturno">
+                                    <Grid Margin="15,0,15,30">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                            <Label Text="Estado: " HorizontalOptions="Start" Font="Bold, 14" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="0" />
+                                            <Label Text="Cantidad Efectiva: " HorizontalOptions="Start" Font="Bold, 14" VerticalTextAlignment="Center" Grid.Row="1" Grid.Column="0"/>
+                                            <Label Text="ID Usuario: " HorizontalOptions="Start" Font="Bold, 14" VerticalTextAlignment="Center" Grid.Row="2" Grid.Column="0" />
+                                            <Label Text="ID Turno: " HorizontalOptions="Start" Font="Bold, 14" VerticalTextAlignment="Center" Grid.Row="3" Grid.Column="0" />
+                                        <Button x:Name="IntercambiarTurno" Text="Intercambiar" Clicked="IntercambiarTurno_Clicked" Grid.Column="1" Grid.Row="4" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" BorderRadius="20" Font="Bold, 13" BackgroundColor="orange" TextColor="White" HeightRequest="40"/>
+                                           
+                                            <Label  x:Name="ActualState" Grid.Column="1" Grid.Row="0" Font="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Text="{Binding ActualState}"/>
+                                            <Label x:Name="EfectiveQuantity" Grid.Column="1" Grid.Row="1" Font="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Text="{Binding EffectiveQuantity}"/>
+                                            <Label x:Name="UserID" Grid.Column="1" Grid.Row="2" Font="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Text="{Binding UserID}"/>
+                                            <Label x:Name="Id_Wor" Grid.Column="1" Grid.Row="3" Font="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Text="{Binding Id_Wor}"/>
+                                    <Button x:Name="RegalarTurno" Text="Regalar"  Command="{Binding Path=BindingContext.Regalo, Source={x:Reference Mis_Turnos}}" CommandParameter="{Binding .}" Grid.Column="2" Grid.Row="4" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" BorderRadius="20" Font="Bold, 13" BackgroundColor="orange" TextColor="White" HeightRequest="40"/>
+                                    </Grid>    
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </ScrollView>
+        </ContentPage.Content>
+    </ContentPage>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MasterDetail.MiPerfil"
+             BackgroundImage="orangebg.png"
+             Title="Mi Perfil">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label Text="Datos Personales" Grid.Row="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" Font="Bold, 22"/>
+                    <Label Text="Rut: " Grid.Row="1" Grid.Column="0" Font="Bold, 14"/>
+                    <Entry x:Name="lblRut" Keyboard="Numeric" TextChanged="lblRut_Validated" Opacity="0.8" Grid.Row="1" Grid.Column="1" Text="" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontSize="14"/>
+                    <Label Text="Email: " Grid.Row="2" Grid.Column="0" Font="Bold, 14" />
+                    <Entry x:Name="lblEmail" Keyboard="Email" Grid.Row="2" Opacity="0.8" Grid.Column="1" Text="" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontSize="14"/>
+                    <Label Text="Contraseña: " Grid.Row="3" Grid.Column="0" HeightRequest="25" Font="Bold, 14"/>
+                    <Entry x:Name="lblPass" IsPassword="true" Grid.Row="3" Opacity="0.8" Grid.Column="1" Text="" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontSize="14"/>
+                        <Image Source="loginpass.png" HeightRequest="20" WidthRequest="20"  Margin="0,0,8,0" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="3" Grid.Column="1">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ShowPass" NumberOfTapsRequired="1" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    <Label Text="Nombre: " Grid.Row="4" Grid.Column="0" HeightRequest="25" Font="Bold, 14"/>
+                    <Entry x:Name="lblName" Grid.Row="4" Grid.Column="1" Opacity="0.8" Text="" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontSize="14"/>
+                    <Label Text="Apellidos: " Grid.Row="5" Grid.Column="0" HeightRequest="25" Font="Bold, 14"/>
+                    <Entry x:Name="lblLastname" Grid.Row="5" Grid.Column="1" Opacity="0.8" Text="" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontSize="14"/>
+                    <Label Text="Supermercado: " Grid.Row="6" Grid.Column="0" HeightRequest="25" Font="Bold, 14"/>
+                    <Picker x:Name="lblSuperm" Grid.Row="6"  Grid.Column="1" Opacity="0.8" ItemDisplayBinding="{Binding SpmName}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontSize="14"/>
+                    <Label Text="Fono: " Grid.Row="7" Grid.Column="0" HeightRequest="25" Font="Bold, 14"/>
+                    <Entry x:Name="lblPhone" Keyboard="Telephone" Grid.Row="7" Opacity="0.8" Grid.Column="1" Text="" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontSize="14"/>
+                    <Label Text="Fecha de nacimiento: " Grid.Row="8" Grid.Column="0" HeightRequest="25" Font="Bold, 14"/>
+                    <DatePicker x:Name="dtpNacimiento" Grid.Row="8" Grid.Column="1" Opacity="0.8" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontSize="14"/>
+                    <Label Text="Sexo: " Grid.Row="9" Grid.Column="0" HeightRequest="25" Font="Bold, 14"/>
+                    <Picker ItemDisplayBinding="{Binding Sexo}" x:Name="PckGender" Opacity="0.8" Title="Seleccione su sexo" Grid.Row="9" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontSize="14" />
+                    <Label Text="Dirección: " Grid.Row="10" Grid.Column="0" HeightRequest="25" Font="Bold, 14"/>
+                    <Entry x:Name="lblAdress" Grid.Row="10" Grid.Column="1" Opacity="0.8" Text="" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontSize="14"/>
+                    <Label Text="Cargo: " Grid.Row="11" Grid.Column="0" HeightRequest="25" Font="Bold, 14"/>
+                    <Entry x:Name="lblJobTitle" Grid.Row="11" Grid.Column="1" Opacity="0.8" Text="" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontSize="14"/>
+                    <ActivityIndicator x:Name="waitActivityIndicator" Grid.Row="12" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Button x:Name="Btn_EditarPerfil" Grid.Row="13" Font="Bold, 17" Grid.ColumnSpan="2" Text="Editar" Clicked="Btn_EditarPerfil_Clicked" BackgroundColor="orange" TextColor="White" BorderRadius="20" HeightRequest="50" HorizontalOptions="FillAndExpand" VerticalOptions="Start"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+
+
+                   

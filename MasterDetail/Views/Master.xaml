@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MasterDetail.Master"
+             BackgroundImage="orangebg.png"
+             BackgroundColor="Transparent"
+             Title="☰">
+    <StackLayout Orientation="Vertical" Padding="10,70" Spacing="4">
+        <Image Source="logo.png" VerticalOptions="Start" Margin="0,2,0,0" HeightRequest="130"></Image>
+        <Button Text="Mi Perfil" x:Name="btnMiPerfil" Clicked="BtnMiPerfil_Clicked" BackgroundColor="orange" TextColor="White" Font="Bold, 15" HeightRequest="50" VerticalOptions="Start" Grid.Row="3" BorderRadius="10"/>
+        <Button Text="Mis Turnos" x:Name="btnMisTurnos" Clicked="BtnMisTurnos_Clicked" BackgroundColor="orange" TextColor="White" Font="Bold, 15" HeightRequest="50" VerticalOptions="Start" Grid.Row="3" BorderRadius="10"/>
+        <Button Text="Lista de Turnos" x:Name="btnListaTurnos" Clicked="BtnListaTurnos_Clicked" BackgroundColor="orange" TextColor="White" Font="Bold, 15" HeightRequest="50" VerticalOptions="Start" Grid.Row="3" BorderRadius="10"/>
+        <Button Text="Mi Rendimiento" x:Name="btnMiRendimiento" Clicked="BtnMiRendimiento_Clicked" BackgroundColor="orange" TextColor="White" Font="Bold, 15" HeightRequest="50" VerticalOptions="Start" Grid.Row="3" BorderRadius="10"/>
+        <Button Text="Notificaciones" x:Name="btnMisNotificaciones" Clicked="BtnMisNotificaciones_Clicked" BackgroundColor="orange" TextColor="White" Font="Bold, 15" HeightRequest="50" VerticalOptions="Start" Grid.Row="3" BorderRadius="10"/>
+        <Button Text="Cerrar Sesión" x:Name="btnCerrarSesion" Clicked="BtnCerrarSesion_Clicked" BackgroundColor="orange" TextColor="White" HeightRequest="50" Font="Bold, 15" VerticalOptions="Start" Grid.Row="3" BorderRadius="10"/>
+    </StackLayout>
+</ContentPage>
