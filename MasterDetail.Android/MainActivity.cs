@@ -11,6 +11,8 @@ using Xamarin.Forms;
 using Android.Gms.Common;
 using Android.Content;
 using Android.Gms.Auth.Api.SignIn;
+using Firebase.Iid;
+using Firebase.Messaging;
 
 namespace MasterDetail.Droid
 {
@@ -25,7 +27,7 @@ namespace MasterDetail.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
-            InitFirebaseAuth();
+            
             UserDialogs.Init(this);
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
@@ -50,31 +52,55 @@ namespace MasterDetail.Droid
             }
             return true;
         }
-        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+
+
+        [Service]
+        [IntentFilter(new[] { "com.google.firebase.INSTANCE_ID_EVENT" })]
+        public class MyFirebaseIIDService : FirebaseInstanceIdService
         {
-            base.OnActivityResult(requestCode, resultCode, data);
-            if (requestCode == FirebaseAuthService.REQ_AUTH && resultCode == Result.Ok)
+            public override void OnTokenRefresh()
             {
-                GoogleSignInAccount sg = (GoogleSignInAccount)data.GetParcelableExtra("result");
-                MessagingCenter.Send(FirebaseAuthService.KEY_AUTH, FirebaseAuthService.KEY_AUTH, sg.IdToken);
+                var refreshedToken = FirebaseInstanceId.Instance.Token;
+                Console.WriteLine($"Token received: {refreshedToken}");
+                SendRegistrationToServerAsync(refreshedToken);
+            }
+
+            void SendRegistrationToServerAsync(string token)
+            {
+                //holi
+            }
+
+
+        }
+        // This service is used if app is in the foreground and a message is received.
+        [Service]
+        [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
+        public class MyFirebaseMessagingService : FirebaseMessagingService
+        {
+            public override void OnMessageReceived(RemoteMessage message)
+            {
+                base.OnMessageReceived(message);
+
+                Console.WriteLine("Received: " + message);
+
+                // Android supports different message payloads. To use the code below it must be something like this (you can paste this into Azure test send window):
+                // {
+                //   "notification" : {
+                //      "body" : "The body",
+                //                 "title" : "The title",
+                //                 "icon" : "myicon
+                //   }
+                // }
+                try
+                {
+                    var msg = message.GetNotification().Body;
+                    MessagingCenter.Send<object, string>(this, MasterDetail.App.NotificationReceivedKey, msg);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error extracting message: " + ex);
+                }
             }
         }
-
-
-        private void InitFirebaseAuth()
-        {
-            var options = new FirebaseOptions.Builder()
-            .SetApplicationId("1:2485447395:android:1bf7180db061f771")
-            .SetApiKey("AIzaSyBdszK9ZCwbukS8Qb1iZ_LCXVq2os-KYJA")
-            .Build();
-
-
-
-            if (app == null)
-                app = FirebaseApp.InitializeApp(this, options, "FirebaseSample");
-
-        }
-
-        
     }
 }

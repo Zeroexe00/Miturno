@@ -1,52 +1,37 @@
 {
   "project_info": {
-    "project_number": "209962729622",
-    "firebase_url": "https://miturnoappp.firebaseio.com",
-    "project_id": "miturnoappp",
-    "storage_bucket": "miturnoappp.appspot.com"
+    "project_number": "948279180148",
+    "firebase_url": "https://miturno-d0ef0.firebaseio.com",
+    "project_id": "miturno-d0ef0",
+    "storage_bucket": "miturno-d0ef0.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:209962729622:android:f5462a0a23969672",
+        "mobilesdk_app_id": "1:948279180148:android:f5462a0a23969672",
         "android_client_info": {
           "package_name": "cl.ProyectoIntegrado.Miturno"
         }
       },
       "oauth_client": [
         {
-          "client_id": "209962729622-5namjqco16oilt1b8il6ia4c9acgcpue.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "cl.ProyectoIntegrado.Miturno",
-            "certificate_hash": "5a05a9920a0dd11d97c3032ff5e59bd9abef20d3"
-          }
-        },
-        {
-          "client_id": "209962729622-ubnfs1dlpgh3v6r4ipmn9rttrfgkqa8p.apps.googleusercontent.com",
+          "client_id": "948279180148-agk03cqo3n3hl9dh353rlq8gbbg1hfoh.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDnsnYM83JjH-F3lbzFOTKkwe6dWA0LgFc"
+          "current_key": "AIzaSyCAn17KKvaAzAxENgwkusJ9XbsM8e50HVQ"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "209962729622-ubnfs1dlpgh3v6r4ipmn9rttrfgkqa8p.apps.googleusercontent.com",
+              "client_id": "948279180148-agk03cqo3n3hl9dh353rlq8gbbg1hfoh.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
         }
       }
     }

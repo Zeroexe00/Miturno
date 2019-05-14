@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Linq;
 using MasterDetail.Models;
+using System.Threading.Tasks;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace MasterDetail
@@ -10,16 +11,33 @@ namespace MasterDetail
     public partial class App : Application
     {
         public static MasterDetailPage MasterD { get; set; }
-
-        public App()
+        public const string NotificationReceivedKey = "NotificationReceived";
+        public  App()
         {
             InitializeComponent();
-            
+
+            //Solucionar Problema de Asincronicos
+            //using(var datos = new DataService())
+            //{
+            //    if ( emp != null)
+            //    {
+                   // MainPage = new NavigationPage(new MainPage(emp));
+
+                //}
+                //else
+                //{
+                    MainPage = new NavigationPage(new Login());
+
+            //    }
+            //}
                 
-         MainPage = new NavigationPage(new Login());
-                
+
             
+
+
         }
+
+        
 
         protected override void OnStart()
         {

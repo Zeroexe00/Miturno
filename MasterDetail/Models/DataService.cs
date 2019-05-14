@@ -1,6 +1,7 @@
 ﻿
 namespace MasterDetail.Models
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -9,10 +10,10 @@ namespace MasterDetail.Models
     using Xamarin.Forms;
 
 
-    public class DataService
+    public class DataService : IDisposable
     {
         private SQLiteAsyncConnection connection;
-
+        
         public DataService()
         {
             this.OpenOrCreateDB();
@@ -25,7 +26,10 @@ namespace MasterDetail.Models
             await connection.CreateTableAsync<Turnos>().ConfigureAwait(false);
             await connection.CreateTableAsync<TraceabilityWorkShift>().ConfigureAwait(false);
         }
-
+        public void Insertar<T>(T model){
+            this.con.Insert(model);
+        }
+       
         public async Task Insert<T>(T model)
         {
             await this.connection.InsertAsync(model);
@@ -75,7 +79,10 @@ namespace MasterDetail.Models
         {
             var query = await this.connection.QueryAsync<EmpaqueModel>("delete from [EmpaqueModel]");
         }
-
+        public void Dispose()
+        {
+            this.connection.CloseAsync();
+        }
     }
 
 }

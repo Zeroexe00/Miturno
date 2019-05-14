@@ -21,8 +21,7 @@ namespace MasterDetail
             this.Detail = new NavigationPage(new Detail(this.empaque));
             App.MasterD = this;
         }
-
-
+        
     }
 }
 

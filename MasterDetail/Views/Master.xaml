@@ -5,7 +5,9 @@
              BackgroundImage="orangebg.png"
              BackgroundColor="Transparent"
              Title="☰">
+    
     <StackLayout Orientation="Vertical" Padding="10,70" Spacing="4">
+        
         <Image Source="logo.png" VerticalOptions="Start" Margin="0,2,0,0" HeightRequest="130"></Image>
         <Button Text="Mi Perfil" x:Name="btnMiPerfil" Clicked="BtnMiPerfil_Clicked" BackgroundColor="orange" TextColor="White" Font="Bold, 15" HeightRequest="50" VerticalOptions="Start" Grid.Row="3" BorderRadius="10"/>
         <Button Text="Mis Turnos" x:Name="btnMisTurnos" Clicked="BtnMisTurnos_Clicked" BackgroundColor="orange" TextColor="White" Font="Bold, 15" HeightRequest="50" VerticalOptions="Start" Grid.Row="3" BorderRadius="10"/>

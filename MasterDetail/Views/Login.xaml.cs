@@ -11,13 +11,14 @@ using Newtonsoft.Json;
 using MasterDetail.Views;
 using MasterDetail.Interface.firebasesample.Services.FirebaseAuth;
 using Acr.UserDialogs;
+using MasterDetail.Models;
 
 namespace MasterDetail
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Login : ContentPage
     {
-        private IFirebaseAuthService _firebaseService;
+        
         public Login()
         
         {
@@ -55,7 +56,12 @@ namespace MasterDetail
                     
                     if (remenberMeSwitch.IsToggled) 
                     {
-                       
+                       using(var item = new DataService())
+                        {
+                            item.Insertar<EmpaqueModel>(emp);
+                           await item.Insert<EmpaqueModel>(emp);
+
+                        }
                         
                     }
 
