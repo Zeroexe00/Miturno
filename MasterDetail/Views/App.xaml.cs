@@ -12,23 +12,24 @@ namespace MasterDetail
     {
         public static MasterDetailPage MasterD { get; set; }
         public const string NotificationReceivedKey = "NotificationReceived";
-        public  App()
+        public App()
         {
             InitializeComponent();
 
             //Solucionar Problema de Asincronicos
-            //using(var datos = new DataService())
+            //using(var datos =  new DataService())
             //{
-            //    if ( emp != null)
+            //    EmpaqueModel emp = await datos.GetEmpaque();
+            //   if ( emp != null)
             //    {
-                   // MainPage = new NavigationPage(new MainPage(emp));
+                   // MainPage =  new NavigationPage(new MainPage(emp));
 
-                //}
-                //else
-                //{
-                    MainPage = new NavigationPage(new Login());
+              //  }
+              // else
+              //  {
+                 MainPage = new NavigationPage(new Login());
 
-            //    }
+              //}
             //}
                 
 
@@ -36,8 +37,35 @@ namespace MasterDetail
 
 
         }
+        //private bool Exists()
+        //{
+        //   var emp = Existe();
+        //    if ()
+        //    {
+        //        return true;
 
-        
+        //    }
+        //    else
+        //    {
+        //        return false;
+
+        //    }
+        //}
+        private async Task<EmpaqueModel> Existe()
+        {
+            using (var datos = new DataService())
+            {
+                EmpaqueModel emp = await datos.GetEmpaque();
+                if (emp != null)
+                {
+                    return emp;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
 
         protected override void OnStart()
         {

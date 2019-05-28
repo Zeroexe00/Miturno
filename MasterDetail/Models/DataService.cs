@@ -26,9 +26,7 @@ namespace MasterDetail.Models
             await connection.CreateTableAsync<Turnos>().ConfigureAwait(false);
             await connection.CreateTableAsync<TraceabilityWorkShift>().ConfigureAwait(false);
         }
-        public void Insertar<T>(T model){
-            this.con.Insert(model);
-        }
+        
        
         public async Task Insert<T>(T model)
         {

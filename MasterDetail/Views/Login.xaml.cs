@@ -58,7 +58,7 @@ namespace MasterDetail
                     {
                        using(var item = new DataService())
                         {
-                            item.Insertar<EmpaqueModel>(emp);
+                            //item.Insertar<EmpaqueModel>(emp);
                            await item.Insert<EmpaqueModel>(emp);
 
                         }
