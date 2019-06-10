@@ -12,6 +12,7 @@ namespace MasterDetail
     {
         public static MasterDetailPage MasterD { get; set; }
         public const string NotificationReceivedKey = "NotificationReceived";
+        public const string MobileServiceUrl = "https://miturno.azurewebsites.net";
         public App()
         {
             InitializeComponent();

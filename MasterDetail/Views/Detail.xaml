@@ -16,16 +16,7 @@
                     <ColumnDefinition Width="30*" />
                     <ColumnDefinition Width="30*" />
                 </Grid.ColumnDefinitions>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Received message:"/>
-                    <Label x:Name="lblMsg" Text="(nothing yet)" TextColor="Gray"/>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Send:" VerticalOptions="Center"/>
-                    <Entry x:Name="txtMsg" WidthRequest="150"/>
-                    <Button x:Name="btnSend" WidthRequest="100" Text="Send" BackgroundColor="Blue" TextColor="White"/>
-                </StackLayout>
+                
                 <Label x:Name="Bienvenido" Text="" HorizontalOptions="CenterAndExpand" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" Font="Bold, 18"/>
                 <Button Image="Listaturnos" Clicked="ListaTurnos" Grid.Row="1" Grid.Column="0" BackgroundColor="Orange" BorderRadius="15"></Button>
                 <Button Image="Mirendimiento" Clicked="MiRendimiento" Grid.Row="1" Grid.Column="1" BackgroundColor="Orange" BorderRadius="15"></Button>
