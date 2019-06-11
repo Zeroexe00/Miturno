@@ -1,6 +1,4 @@
-﻿
-using System;
-
+﻿using System;
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
@@ -95,7 +93,7 @@ namespace MasterDetail.Droid
                     "{" +
                         "\"notification\" : {" +
                         "\"body\" : \"$(messageParam)\"," +
-                          "\"title\" : \"Xamarin University\"," +
+                          "\"title\" : \"MiturnoApp\"," +
                         "\"icon\" : \"myicon\" }" +
                     "}";
 
