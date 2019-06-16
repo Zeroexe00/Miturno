@@ -19,7 +19,6 @@
                     <Button x:Name="btnSend" WidthRequest="100" Text="Send" BackgroundColor="Blue" TextColor="White"/>
                 </StackLayout>
                
-           
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

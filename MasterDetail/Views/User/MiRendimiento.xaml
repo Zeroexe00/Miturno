@@ -7,7 +7,19 @@
              Title="Mi Rendimiento">
     <ContentPage.Content>
         <StackLayout>
-            
+            <ListView x:Name="Empaques" ItemsSource="{Binding Lista}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Switch IsToggled="{Binding IsChecked}"></Switch>
+                                <Label Text="{Binding FirstName}" TextColor="Black"></Label>
+                                <Label Text="{Binding LastName}" TextColor="Black"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

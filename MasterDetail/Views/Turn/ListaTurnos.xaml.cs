@@ -34,20 +34,16 @@ namespace MasterDetail
 
             try
             {
-                
-                
-                   
-                        string response = await Service.GetAllApi("api/turn");
 
-                        List<Turnos> turnos = JsonConvert.DeserializeObject<List<Turnos>>(response);
-                        gTurnos = turnos;
-                        waitActivityIndicator.IsRunning = false;
+                string response = await Service.GetAllApi("api/turn");
 
-                        LV_Turnos.ItemsSource = turnos;
-                        
-                            
-                   
+                List<Turnos> turnos = JsonConvert.DeserializeObject<List<Turnos>>(response);
+                gTurnos = turnos;
+                waitActivityIndicator.IsRunning = false;
+
+                LV_Turnos.ItemsSource = turnos;
                 
+
             }
 
             catch (Exception ex)
@@ -65,9 +61,9 @@ namespace MasterDetail
             Turnos item = (Turnos)e.Item;
             TomandoT(item);
 
-            foreach(var turn in LV_Turnos.ItemsSource as List<Turnos>)
+            foreach (var turn in LV_Turnos.ItemsSource as List<Turnos>)
             {
-                if(item.Id == turn.Id)
+                if (item.Id == turn.Id)
                 {
                     gTurnos.Remove(turn);
                     LV_Turnos.ItemsSource = null;
@@ -101,27 +97,27 @@ namespace MasterDetail
             else
 
             {
-                
+
 
                 return;
             }
-            
-                HttpResponseMessage response = await Service.Post("api/TraceabilityWorkShift", turnotomado);
 
-                if (response.StatusCode != System.Net.HttpStatusCode.NotFound && response.StatusCode != System.Net.HttpStatusCode.NoContent && response.StatusCode != System.Net.HttpStatusCode.InternalServerError)
-                {
+            HttpResponseMessage response = await Service.Post("api/TraceabilityWorkShift", turnotomado);
+
+            if (response.StatusCode != System.Net.HttpStatusCode.NotFound && response.StatusCode != System.Net.HttpStatusCode.NoContent && response.StatusCode != System.Net.HttpStatusCode.InternalServerError)
+            {
                 waitActivityIndicator.IsRunning = false;
-                    await DisplayAlert("¡Éxito!", "Turno asignado exitosamente", "Aceptar", "Cancelar");
-                    LV_Turnos.IsEnabled = true;
-                }
+                await DisplayAlert("¡Éxito!", "Turno asignado exitosamente", "Aceptar", "Cancelar");
+                LV_Turnos.IsEnabled = true;
+            }
 
-                else
-                {
-                    LV_Turnos.IsEnabled = true;
+            else
+            {
+                LV_Turnos.IsEnabled = true;
 
-                    await DisplayAlert("Fallo", "Error al asignar turno", "OK");
+                await DisplayAlert("Fallo", "Error al asignar turno", "OK");
 
-                }
+            }
             //}
             //catch (Exception ex)
             //{

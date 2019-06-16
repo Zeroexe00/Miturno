@@ -17,14 +17,16 @@ namespace MasterDetail
         {
             em = empaque;
             InitializeComponent();
+            
             Cargar();
             NavigationPage.SetBackButtonTitle(this, "MiTurnoAPP");
-            
+
         }
 
         private void Cargar()
         {
             GrillaTurnosAsync();
+            
         }
 
         private async Task GrillaTurnosAsync()
@@ -33,27 +35,27 @@ namespace MasterDetail
 
             try
             {
-                
-                    List<TraceabilityWorkShift> turnosTomados = new List<TraceabilityWorkShift>();
-                  
-                    if (Mis_Turnos.ItemsSource == null || turnosTomados.Count == 0)
-                    {
-                        string response = await Service.GetAllApi("api/TraceabilityWorkShiftsByEmpaque?Id=" + em.Id.ToString());
 
-                        List<TraceabilityWorkShift> Mturnos = JsonConvert.DeserializeObject<List<TraceabilityWorkShift>>(response);
+                List<TraceabilityWorkShift> turnosTomados = new List<TraceabilityWorkShift>();
 
-                        waitActivityIndicator.IsRunning = false;
+                if (Mis_Turnos.ItemsSource == null || turnosTomados.Count == 0)
+                {
+                    string response = await Service.GetAllApi("api/TraceabilityWorkShiftsByEmpaque?Id=" + em.Id.ToString());
 
-                       
+                    List<TraceabilityWorkShift> Mturnos = JsonConvert.DeserializeObject<List<TraceabilityWorkShift>>(response);
 
-                        Mis_Turnos.ItemsSource = Mturnos;
-                    }
+                    waitActivityIndicator.IsRunning = false;
 
-                    else
-                    {
-                        Mis_Turnos.ItemsSource = turnosTomados;
-                    }
-                
+
+
+                    Mis_Turnos.ItemsSource = Mturnos;
+                }
+
+                else
+                {
+                    Mis_Turnos.ItemsSource = turnosTomados;
+                }
+
             }
 
             catch (Exception ex)
@@ -72,8 +74,9 @@ namespace MasterDetail
 
 
             string Label = label.Text;
-            
-            try {
+
+            try
+            {
 
                 //   HttpResponseMessage response = await Service.Delete("api/TraceabilityWorkShift/" + turnoRegalado.Id.ToString());
                 //if (response.StatusCode != System.Net.HttpStatusCode.NotFound && response.StatusCode != System.Net.HttpStatusCode.InternalServerError)
