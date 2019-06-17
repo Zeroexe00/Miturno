@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 
-namespace MasterDetail.Models
+namespace MasterDetail.ViewModels
 {
     public class ListaChecks: INotifyPropertyChanged
     {

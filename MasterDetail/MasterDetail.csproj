@@ -28,7 +28,6 @@
     <Compile Remove="Services\Services.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\User\" />
     <Folder Include="Views\Turn\" />
   </ItemGroup>
   <ItemGroup>
@@ -2030,5 +2029,13 @@
     <Reference Include="Xamarin.iOS" />
     <Reference Include="Xamarin.iOS" />
     <Reference Include="Java.Interop" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Views\User\ListaAsistencia.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\User\ListaParaRegalar.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

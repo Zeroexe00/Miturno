@@ -8,7 +8,7 @@
         <ScrollView>
             <StackLayout HeightRequest="300">
                 <ActivityIndicator x:Name="waitActivityIndicator" HorizontalOptions="Center" VerticalOptions="Center"/>
-                    <ListView x:Name="Mis_Turnos"  HasUnevenRows="True" BackgroundColor="Transparent">
+                    <ListView ItemsSource="{Binding Lista}" x:Name="ListaMisturnos"  HasUnevenRows="True" BackgroundColor="Transparent">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell  x:Name="cvturno">
@@ -21,20 +21,20 @@
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
-                                            <Label Text="Estado: " HorizontalOptions="Start" Font="Bold, 14" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="0" />
-                                            <Label Text="Cantidad Efectiva: " HorizontalOptions="Start" Font="Bold, 14" VerticalTextAlignment="Center" Grid.Row="1" Grid.Column="0"/>
-                                            <Label Text="ID Usuario: " HorizontalOptions="Start" Font="Bold, 14" VerticalTextAlignment="Center" Grid.Row="2" Grid.Column="0" />
-                                            <Label Text="ID Turno: " HorizontalOptions="Start" Font="Bold, 14" VerticalTextAlignment="Center" Grid.Row="3" Grid.Column="0" />
-                                    <Button x:Name="Asistencia" IsVisible="False" Text="Asistencia"  Command="{Binding Path=BindingContext.Asistencia, Source={x:Reference Mis_Turnos}}" CommandParameter="{Binding .}" Grid.Column="0" Grid.Row="4" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" BorderRadius="20" Font="Bold, 13" BackgroundColor="orange" TextColor="White" HeightRequest="40"/>
+                                            <Label Text="Fecha Turno: " HorizontalOptions="Start" Font="Bold, 14" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="0" />
+                                            <Label Text="Hora Inicio: " HorizontalOptions="Start" Font="Bold, 14" VerticalTextAlignment="Center" Grid.Row="1" Grid.Column="0"/>
+                                            <Label Text="Hora Finaliza: " HorizontalOptions="Start" Font="Bold, 14" VerticalTextAlignment="Center" Grid.Row="2" Grid.Column="0" />
+                                    <Button x:Name="Asistencia" IsVisible="True" Text="Asistencia"  Command="{Binding Source={x:Reference ListaMisturnos}, Path=BindingContext.Asistencia }"
+                                CommandParameter="{Binding .}"  Grid.Column="0" Grid.Row="3" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" BorderRadius="20" Font="Bold, 13" BackgroundColor="orange" TextColor="White" HeightRequest="40"/>
 
 
-                                        <Label  x:Name="ActualState" Grid.Column="1" Grid.Row="0" Font="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Text="{Binding ActualState}"/>
-                                            <Label x:Name="EfectiveQuantity" Grid.Column="1" Grid.Row="1" Font="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Text="{Binding EffectiveQuantity}"/>
-                                            <Label x:Name="UserID" Grid.Column="1" Grid.Row="2" Font="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Text="{Binding UserID}"/>
-                                            <Label x:Name="Id_Wor" Grid.Column="1" Grid.Row="3" Font="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Text="{Binding Id_Wor}"/>
-                                    <Button x:Name="RegalarTurno" Text="Regalar"  Command="{Binding Path=BindingContext.Regalo, Source={x:Reference Mis_Turnos}}" CommandParameter="{Binding .}" Grid.Column="1" Grid.Row="4" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" BorderRadius="20" Font="Bold, 13" BackgroundColor="orange" TextColor="White" HeightRequest="40"/>
-                                    </Grid>    
+                                    <Label  x:Name="ActualState" Grid.Column="1" Grid.Row="0" Font="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Text="{Binding FechaTurno}"/>
+                                    <Label  Grid.Column="1" Grid.Row="1" Font="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Text="{Binding HoraInicio}"/>
+                                    <Label  Grid.Column="1" Grid.Row="2" Font="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Text="{Binding HoraFinaliza}"/>
+                                    <Button x:Name="RegalarTurno" Text="Regalar"  Command="{Binding Path=BindingContext.Regalar, Source={x:Reference ListaMisturnos}}" CommandParameter="{Binding .}" Grid.Column="1" Grid.Row="3" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" BorderRadius="20" Font="Bold, 13" BackgroundColor="orange" TextColor="White" HeightRequest="40"/>
+                                </Grid>    
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>

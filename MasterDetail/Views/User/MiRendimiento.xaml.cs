@@ -15,26 +15,25 @@ namespace MasterDetail
             InitializeComponent();
             //IniciarLista();
             NavigationPage.SetBackButtonTitle(this, "MiTurnoAPP");
-            BindingContext = new ListaEmpaquesViewModel();
         }
 
-        private async void IniciarLista()
-        {
-            string Usuarios = await Service.GetAllApi("api/User");
-            ObservableCollection<ListaChecks> lista = new ObservableCollection<ListaChecks>();
-            List<EmpaqueModel> empaques = JsonConvert.DeserializeObject<List<EmpaqueModel>>(Usuarios);
-            foreach(var item in empaques)
-            {
-                ListaChecks lis = new ListaChecks();
-                lis.Title = item.FirstName;
+        //private async void IniciarLista()
+        //{
+        //    string Usuarios = await Service.GetAllApi("api/User");
+        //    ObservableCollection<ListaChecks> lista = new ObservableCollection<ListaChecks>();
+        //    List<EmpaqueModel> empaques = JsonConvert.DeserializeObject<List<EmpaqueModel>>(Usuarios);
+        //    foreach(var item in empaques)
+        //    {
+        //        ListaChecks lis = new ListaChecks();
+        //        lis.Title = item.FirstName;
                 
-                lis.IsChecked = false;
+        //        lis.IsChecked = false;
 
-                lista.Add(lis);
+        //        lista.Add(lis);
                 
-            }
-            Empaques.ItemsSource = lista;
+        //    }
+        //    Empaques.ItemsSource = lista;
 
-        }
+        //}
     }
 }
