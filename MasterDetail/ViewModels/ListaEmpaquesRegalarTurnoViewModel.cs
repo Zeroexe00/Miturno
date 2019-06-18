@@ -39,7 +39,7 @@ namespace MasterDetail.ViewModels
 
         private async void Llenar(int id,int spmt,int TurnID)
         {
-            try
+            try 
             {
                 var respuesta = await Service.GetAllApi("api/GetListaEmpaquesSupermarket?id=" + id.ToString()+"&spmt="+spmt.ToString()+"&TurnID="+ TurnID.ToString());
                 ObservableCollection<Empaque> empaques = JsonConvert.DeserializeObject<ObservableCollection<Empaque>>(respuesta);
