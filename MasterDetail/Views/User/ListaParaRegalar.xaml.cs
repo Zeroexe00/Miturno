@@ -48,9 +48,25 @@ namespace MasterDetail.Views.User
         }
         private void Enviar_Clicked(object sender, EventArgs e)
         {
-            var empaques = ListaEmp.ItemsSource;
+            var empaques = (ObservableCollection<Empaque>)ListaEmp.ItemsSource;
+            int checks = 0;
+            if (empaques.Count != 0)
+            {
+                foreach (var item in empaques)
+                {
+                    if (item.IsChecked && (checks<1||checks==0))
+                    {
+                        checks++;
+                        TraceabilityWorkShift shift = new TraceabilityWorkShift();
+                        shift.ActualState = "2";
 
-
+                    }    
+                }
+            }
+            else
+            {
+                DisplayAlert("Error", "No se encontraron empaques para regalar", "Aceptar");
+            }
         }
     }
 

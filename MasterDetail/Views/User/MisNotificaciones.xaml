@@ -4,6 +4,7 @@
              x:Class="MasterDetail.MisNotificaciones"
              BackgroundImage="orangebg.png"
              NavigationPage.BackButtonTitle="MiTurnoAPP"
+             xmlns:controls="clr-namespace:MasterDetail.Controls"
              Title="Notificaciones">
     <ContentPage.Content>
        <StackLayout>
@@ -18,7 +19,9 @@
                     <Entry x:Name="txtMsg" WidthRequest="150"/>
                     <Button x:Name="btnSend" WidthRequest="100" Text="Send" BackgroundColor="Blue" TextColor="White"/>
                 </StackLayout>
-               
+            <controls:AdMobView
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start" Grid.Row="3" Grid.ColumnSpan="2" HeightRequest="90" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

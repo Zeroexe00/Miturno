@@ -99,7 +99,15 @@ namespace MasterDetail
 
         private void lblRut_Validated(object sender, EventArgs e)
         {
+            if (lblRut.Text.Length > 1)
+            {
+
             lblRut.Text = formatearRut(lblRut.Text);
+
+            }else
+            {
+                return;
+            }
         }
 
         public string formatearRut(string rut)
@@ -191,5 +199,7 @@ namespace MasterDetail
                 return;
             }
         }
+
+        
     }
 }

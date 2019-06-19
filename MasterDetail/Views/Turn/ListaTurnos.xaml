@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MasterDetail.ListaTurnos"
              BackgroundImage="orangebg.png"
+             xmlns:controls="clr-namespace:MasterDetail.Controls"
              Title="Lista de Turnos">
     <ContentPage.Content>
         <ScrollView>
@@ -38,8 +39,12 @@
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
-                    </ListView>
-                </StackLayout>
-            </ScrollView>
+                </ListView>
+                <controls:AdMobView
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start" HeightRequest="90" />
+            </StackLayout>
+            
+        </ScrollView>
         </ContentPage.Content>
     </ContentPage>

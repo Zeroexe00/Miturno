@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MasterDetail.MisTurnos"
              BackgroundImage="orangebg.png"
+             xmlns:controls="clr-namespace:MasterDetail.Controls"
              Title="Mis Turnos">
     <ContentPage.Content>
         <ScrollView>
@@ -39,6 +40,9 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+                <controls:AdMobView
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start" Grid.Row="3" Grid.ColumnSpan="2" HeightRequest="50" />
                 </StackLayout>
             </ScrollView>
         </ContentPage.Content>

@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              x:Class="MasterDetail.Views.User.ListaParaRegalar"
              BackgroundImage="orangebg.png"
+             xmlns:controls="clr-namespace:MasterDetail.Controls"
              Title="Regalar Turno">
     >
     <ContentPage.Content>
@@ -19,6 +20,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Switch x:Name="swtAll" IsToggled="False" Toggled="Handle_Toggled" Grid.Column="0" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center"></Switch>
@@ -36,6 +38,9 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 <Button x:Name="Enviar" Text="Enviar" Clicked="Enviar_Clicked" Grid.ColumnSpan="2" Grid.Row="2" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" BorderRadius="20" Font="Bold, 13" BackgroundColor="orange" TextColor="White" HeightRequest="40"/>
+                <controls:AdMobView
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start" Grid.Row="3" Grid.ColumnSpan="2" HeightRequest="90" />
             </Grid>
         </StackLayout>
 

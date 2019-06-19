@@ -4,6 +4,9 @@ using Xamarin.Forms.Xaml;
 using System.Linq;
 using MasterDetail.Models;
 using System.Threading.Tasks;
+using MasterDetail.Helpers;
+using MasterDetail.Servicio;
+using Newtonsoft.Json;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace MasterDetail
@@ -17,26 +20,32 @@ namespace MasterDetail
         {
             InitializeComponent();
 
-            //Solucionar Problema de Asincronicos
-            //using(var datos =  new DataService())
-            //{
-            //    EmpaqueModel emp = await datos.GetEmpaque();
-            //   if ( emp != null)
-            //    {
-                   // MainPage =  new NavigationPage(new MainPage(emp));
+           if(Settings.Remember && Settings.Empaque!=string.Empty && Settings.EmpaquePass != string.Empty)
+            {
+                EmpaqueModel empaque = new EmpaqueModel()
+                {
+                    Email = Settings.Empaque,
+                    Password = Settings.EmpaquePass
+                };
+                
+                var empty = Obtener(empaque).Result;
+                EmpaqueModel emp = JsonConvert.DeserializeObject<EmpaqueModel>(empty.ToString());
 
-              //  }
-              // else
-              //  {
-                 MainPage = new NavigationPage(new Login());
-
-              //}
-            //}
+                MainPage = new NavigationPage(new MainPage(emp));
+            }
+            else
+            {
+                MainPage = new NavigationPage(new Login());
+            }
                 
 
-            
+        }
 
+        private async Task<string> Obtener(EmpaqueModel empaque)
+        {
+            var empty = await Service.GetOneApi("api/User/Authenticate", empaque);
 
+            return empty;
         }
         //private bool Exists()
         //{
