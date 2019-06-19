@@ -27,14 +27,18 @@ namespace MasterDetail.ViewModels
         public class Empaque
         {
             public bool IsChecked { get; set; }
+        public int EmpID { get; set; }
             public string FullName { get; set; }
-
+            public int Supermarket { get; set; }
+            public int EmpaqueSolicita { get; set; }
+            public int Turno { get; set; }
+            public int TrazaTurno { get; set; }
         }
 
         public ListaEmpaquesRegalarTurnoViewModel(int id,int spmt, int TurnID)
         {
             Llenar(id,spmt,TurnID);
-            PostRegalar = new Command<ObservableCollection<Empaque>>(HandleRegalar);
+            //PostRegalar = new Command<ObservableCollection<Empaque>>(HandleRegalar);
         }
 
         private async void Llenar(int id,int spmt,int TurnID)
@@ -53,20 +57,7 @@ namespace MasterDetail.ViewModels
 
         }
 
-        public Command<ObservableCollection<Empaque>> PostRegalar { get; set; }
-        public async void HandleRegalar(ObservableCollection<Empaque> empaque)
-        {
-            ObservableCollection<Empaque> e = empaque;
-
-            foreach (var item in e)
-            {
-                string hola;
-                hola = item.FullName;
-            }
-            await Application.Current.MainPage.DisplayAlert("hola ", e.ToString(), "Aceptar");
-
-
-        }
+        
 
 
 

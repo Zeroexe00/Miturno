@@ -16,7 +16,7 @@ namespace MasterDetail.Models
         
         public DataService()
         {
-            this.OpenOrCreateDB();
+            this.OpenOrCreateDB().Wait();
         }
         private async Task OpenOrCreateDB()
         {

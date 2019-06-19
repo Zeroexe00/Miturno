@@ -46,7 +46,7 @@ namespace MasterDetail.Views.User
                 ListaEmp.ItemsSource = emp;
             }
         }
-        private void Enviar_Clicked(object sender, EventArgs e)
+        private async void Enviar_Clicked(object sender, EventArgs e)
         {
             var empaques = (ObservableCollection<Empaque>)ListaEmp.ItemsSource;
             int checks = 0;
@@ -57,15 +57,38 @@ namespace MasterDetail.Views.User
                     if (item.IsChecked && (checks<1||checks==0))
                     {
                         checks++;
-                        TraceabilityWorkShift shift = new TraceabilityWorkShift();
-                        shift.ActualState = "2";
+                        TraceabilityWorkShift shift = new TraceabilityWorkShift
+                        {
+                            Id = item.TrazaTurno,
+                            ActualState = "2",
+                            EffectiveQuantity = 1,
+                            UserID = item.EmpaqueSolicita,
+                            Id_Wor = item.Turno
+                        };
+                        TraceabilityWorkShift shift1 = new TraceabilityWorkShift
+                        {
+                            Id = 0,
+                            ActualState = "1",
+                            EffectiveQuantity = 1,
+                            UserID = item.EmpID,
+                            Id_Wor = item.Turno
+                        };
 
-                    }    
+                        
+
+                        var response = await Servicio.Service.Post("api/PostRegalarIntercambiar", shift);
+
+                        var response1 = await Servicio.Service.Post("api/TraceabilityWorkShift", shift1);
+
+                        await DisplayAlert("Exito!", "Se regalo turno correctamente", "Aceptar");
+
+
+                    }
                 }
             }
             else
             {
-                DisplayAlert("Error", "No se encontraron empaques para regalar", "Aceptar");
+               await DisplayAlert("Error", "No se encontraron empaques para regalar", "Aceptar");
             }
         }
     }

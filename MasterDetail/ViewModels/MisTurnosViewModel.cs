@@ -17,6 +17,7 @@ namespace MasterDetail.ViewModels
             public int id { get; set; }
             public int TurnID { get; set; }
             public int spmt { get; set; }
+            public string EmpaqueState { get; set; }
             public string FechaTurno { get; set; }
             public string HoraInicio { get; set; }
             public string HoraFinaliza { get; set; }

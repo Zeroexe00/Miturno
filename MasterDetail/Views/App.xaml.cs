@@ -16,27 +16,13 @@ namespace MasterDetail
         public static MasterDetailPage MasterD { get; set; }
         public const string NotificationReceivedKey = "NotificationReceived";
         public const string MobileServiceUrl = "https://miturno.azurewebsites.net";
+        private DataService datos;
         public App()
         {
             InitializeComponent();
-
-           if(Settings.Remember && Settings.Empaque!=string.Empty && Settings.EmpaquePass != string.Empty)
-            {
-                EmpaqueModel empaque = new EmpaqueModel()
-                {
-                    Email = Settings.Empaque,
-                    Password = Settings.EmpaquePass
-                };
-                
-                var empty = Obtener(empaque).Result;
-                EmpaqueModel emp = JsonConvert.DeserializeObject<EmpaqueModel>(empty.ToString());
-
-                MainPage = new NavigationPage(new MainPage(emp));
-            }
-            else
-            {
+           
                 MainPage = new NavigationPage(new Login());
-            }
+            
                 
 
         }
@@ -47,34 +33,11 @@ namespace MasterDetail
 
             return empty;
         }
-        //private bool Exists()
-        //{
-        //   var emp = Existe();
-        //    if ()
-        //    {
-        //        return true;
-
-        //    }
-        //    else
-        //    {
-        //        return false;
-
-        //    }
-        //}
-        private async Task<EmpaqueModel> Existe()
+        private async Task<EmpaqueModel> ObtenerEmpaque()
         {
-            using (var datos = new DataService())
-            {
-                EmpaqueModel emp = await datos.GetEmpaque();
-                if (emp != null)
-                {
-                    return emp;
-                }
-                else
-                {
-                    return null;
-                }
-            }
+            datos = new DataService();
+            var emp = await datos.GetEmpaque();
+            return emp;
         }
 
         protected override void OnStart()
