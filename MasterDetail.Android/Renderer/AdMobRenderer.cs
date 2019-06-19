@@ -20,8 +20,8 @@ namespace MasterDetail.Droid.Renderer
             {
                 var ad = new AdView(Context)
                 {
-                    AdSize = AdSize.Banner,
-                    AdUnitId = "ca-app-pub-3940256099942544/6300978111"
+                    AdSize = AdSize.SmartBanner,
+                    AdUnitId = "ca-app-pub-5340043973194653/6114982135"
 
                 };
                 
