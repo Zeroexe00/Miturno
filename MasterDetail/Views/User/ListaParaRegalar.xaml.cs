@@ -46,6 +46,12 @@ namespace MasterDetail.Views.User
                 ListaEmp.ItemsSource = emp;
             }
         }
+        private void Enviar_Clicked(object sender, EventArgs e)
+        {
+            var empaques = ListaEmp.ItemsSource;
+
+
+        }
     }
 
 }

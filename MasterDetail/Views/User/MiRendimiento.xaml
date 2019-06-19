@@ -4,10 +4,13 @@
              x:Class="MasterDetail.MiRendimiento"
              BackgroundImage="orangebg.png"
              NavigationPage.BackButtonTitle="MiTurnoAPP"
+             xmlns:controls="clr-namespace:MasterDetail.Controls"
              Title="Mi Rendimiento">
     <ContentPage.Content>
         <StackLayout>
-            
+            <controls:AdMobView
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

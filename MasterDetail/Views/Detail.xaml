@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:MasterDetail.Controls"
              x:Class="MasterDetail.Detail"
              BackgroundImage="orangebg.png"
              Title="Mi TurnoApp">
     <ContentPage.Content >
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="10,0,10,5">
+            
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*" />
+                    <RowDefinition Height="3*" />
                     <RowDefinition Height="3*" />
                     <RowDefinition Height="3*" />
                 </Grid.RowDefinitions>
@@ -18,10 +21,11 @@
                 </Grid.ColumnDefinitions>
                 
                 <Label x:Name="Bienvenido" Text="" HorizontalOptions="CenterAndExpand" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" Font="Bold, 18"/>
-                <Button Image="Listaturnos" Clicked="ListaTurnos" Grid.Row="1" Grid.Column="0" BackgroundColor="Orange" BorderRadius="15"></Button>
-                <Button Image="Mirendimiento" Clicked="MiRendimiento" Grid.Row="1" Grid.Column="1" BackgroundColor="Orange" BorderRadius="15"></Button>
-                <Button Image="Misturnos" Clicked="MisTurnos" Grid.Row="2" Grid.Column="0" BackgroundColor="Orange" BorderRadius="15"></Button>
-                <Button Image="Notificaciones" Clicked="MisNotificaciones" Grid.Row="2" Grid.Column="1" BackgroundColor="Orange" BorderRadius="15"></Button>
+                
+                <Button Image="Listaturnos" Clicked="ListaTurnos" Grid.Row="2" Grid.Column="0" BackgroundColor="Orange" BorderRadius="15"></Button>
+                <Button Image="Mirendimiento" Clicked="MiRendimiento" Grid.Row="2" Grid.Column="1" BackgroundColor="Orange" BorderRadius="15"></Button>
+                <Button Image="Misturnos" Clicked="MisTurnos" Grid.Row="3" Grid.Column="0" BackgroundColor="Orange" BorderRadius="15"></Button>
+                <Button Image="Notificaciones" Clicked="MisNotificaciones" Grid.Row="3" Grid.Column="1" BackgroundColor="Orange" BorderRadius="15"></Button>
             </Grid>
         </StackLayout>
     </ContentPage.Content>
