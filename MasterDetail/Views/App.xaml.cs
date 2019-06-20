@@ -16,28 +16,13 @@ namespace MasterDetail
         public static MasterDetailPage MasterD { get; set; }
         public const string NotificationReceivedKey = "NotificationReceived";
         public const string MobileServiceUrl = "https://miturno.azurewebsites.net";
-        private DataService datos;
+        
         public App()
         {
             InitializeComponent();
            
-                MainPage = new NavigationPage(new Login());
+            MainPage = new NavigationPage(new Login());
             
-                
-
-        }
-
-        private async Task<string> Obtener(EmpaqueModel empaque)
-        {
-            var empty = await Service.GetOneApi("api/User/Authenticate", empaque);
-
-            return empty;
-        }
-        private async Task<EmpaqueModel> ObtenerEmpaque()
-        {
-            datos = new DataService();
-            var emp = await datos.GetEmpaque();
-            return emp;
         }
 
         protected override void OnStart()
