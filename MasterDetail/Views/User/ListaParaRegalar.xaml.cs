@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,7 +21,11 @@ namespace MasterDetail.Views.User
         {
             InitializeComponent();
             BindingContext = new ListaEmpaquesRegalarTurnoViewModel(id,spmt,TurnID);
+            _client.BaseAddress = new Uri(App.MobileServiceUrl);
+            _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            _client.Timeout = TimeSpan.FromSeconds(120);
         }
+        HttpClient _client = new HttpClient();
 
         private void Handle_Toggled(object sender, ToggledEventArgs e)
         {
@@ -54,7 +60,7 @@ namespace MasterDetail.Views.User
             {
                 foreach (var item in empaques)
                 {
-                    if (item.IsChecked && (checks<1||checks==0))
+                    if (item.IsChecked && (checks < 1 || checks == 0))
                     {
                         checks++;
                         TraceabilityWorkShift shift = new TraceabilityWorkShift
@@ -79,6 +85,10 @@ namespace MasterDetail.Views.User
                         var response = await Servicio.Service.Post("api/PostRegalarIntercambiar", shift);
 
                         var response1 = await Servicio.Service.Post("api/TraceabilityWorkShift", shift1);
+
+                        string txtMsg = "Se regalo un turno correctamente.";
+                        var content = new StringContent("\"" + txtMsg + "\"", Encoding.UTF8, "application/json");
+                        var result = await _client.PostAsync("xamunotifications", content);
 
                         await DisplayAlert("Exito!", "Se regalo turno correctamente", "Aceptar");
 
